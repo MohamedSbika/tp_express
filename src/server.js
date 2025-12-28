@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const userRoutes = require('./api/routes/user.routes');
+const courseRoutes = require('./api/routes/course.routes');
 const logger = require('./middlewares/logger');
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/users', userRoutes);
+app.use('/api/courses', courseRoutes);
 
 app.listen(PORT, () => {
     console.log(`Serveur démarré sur le port ${PORT}`);
