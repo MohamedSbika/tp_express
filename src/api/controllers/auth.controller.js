@@ -1,7 +1,6 @@
 const User = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 
-// Générer un token JWT
 const generateToken = (userId) => {
     return jwt.sign(
         { id: userId , email : user.email , name : user.name },
@@ -10,7 +9,6 @@ const generateToken = (userId) => {
     );
 };
 
-// Inscription
 exports.register = async (req, res) => {
     try {
         const { name, email, password, age } = req.body;
@@ -46,12 +44,9 @@ exports.register = async (req, res) => {
     }
 };
 
-// Connexion
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
-
-        // Validation
         if (!email || !password) {
             return res.status(400).json({
                 success: false,
@@ -59,7 +54,6 @@ exports.login = async (req, res) => {
             });
         }
 
-        // Trouver l'utilisateur avec le password
         const user = await User.findOne({ email }).select('+password');
 
         if (!user) {
@@ -69,7 +63,6 @@ exports.login = async (req, res) => {
             });
         }
 
-        // Vérifier le password
         const isPasswordValid = await user.comparePassword(password);
 
         if (!isPasswordValid) {
@@ -79,7 +72,6 @@ exports.login = async (req, res) => {
             });
         }
 
-        // Générer le token
         const token = generateToken(user._id);
 
         res.status(200).json({
@@ -102,7 +94,6 @@ exports.login = async (req, res) => {
     }
 };
 
-// Récupérer son profil (route protégée)
 exports.getMe = async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
