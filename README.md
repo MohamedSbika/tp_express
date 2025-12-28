@@ -770,31 +770,6 @@ Authorization: Bearer VOTRE_TOKEN
 
 ---
 
-## Exercices pratiques
-
-### 🎯 Niveau Débutant
-
-1. **Créer 3 utilisateurs** différents
-2. **Créer 5 cours** avec différents niveaux
-3. **Récupérer tous les cours** et compter combien il y en a
-4. **Modifier un cours** pour changer sa durée
-5. **Supprimer un cours**
-
-### 🎯 Niveau Intermédiaire
-
-1. **Ajouter un champ `category`** au modèle Course
-2. **Créer une route** pour filtrer les cours par instructeur
-3. **Ajouter une validation** : la durée doit être entre 1 et 100 heures
-4. **Créer un middleware** qui log le temps de réponse des requêtes
-
-### 🎯 Niveau Avancé
-
-1. **Ajouter la pagination** à la route GET /api/courses
-2. **Créer une relation** entre User et Course (un cours appartient à un user)
-3. **Ajouter un système de refresh token**
-4. **Implémenter la recherche** (rechercher des cours par titre)
-
----
 
 ## Ressources pour aller plus loin
 
